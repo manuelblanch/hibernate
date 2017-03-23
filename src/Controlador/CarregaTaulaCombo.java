@@ -35,7 +35,7 @@ import javax.swing.table.TableModel;
  *
  * @author profe
  */
-public class CarregaTaula {
+public class CarregaTaulaCombo {
     
     //Mètode que carrega els objectes continguts a l'ArrayList i el mostra a la JTable. La classe indica de quin tipo són els objectes de l'ArrayList
     //Si volem que es pugue modificar les dades directament des de la taula hauríem d'usar el model instància de la classe ModelCanvisBD, que varia d'una BD a una altra
@@ -122,7 +122,7 @@ public class CarregaTaula {
         
         return columna;
 
-    }        
+}   
     
     public static void carregaTaula_v2(ArrayList resultSet, JTable taula, Class<?> classe) {
         // TODO add your handling code here:

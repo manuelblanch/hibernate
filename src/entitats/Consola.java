@@ -5,47 +5,43 @@
  */
 package entitats;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
  *
  * @author manuel
  */
 @Entity
-@Table(name = "consoles")
 public class Consola {
 
-    public Consola(String _2_nom, String _3_marca) {
-        this._2_nom = _2_nom;
-        this._3_marca = _3_marca;
-    }
-
+ 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long _1_id;
-    
     private String _2_nom;
-    
     private String _3_marca;
-    
-    @Transient
+
+    @OneToOne(optional = false)   //competencia entre consoles
     private Consola _4_competencia;
 
-    public Consola() {
-       
+    
+    public Consola(String _2_nom, String _3_marca, Consola _4_competencia) {
+        this._2_nom = _2_nom;
+        this._3_marca = _3_marca;
+        this._4_competencia = _4_competencia;
     }
 
     public long get1_id() {
         return _1_id;
     }
 
-    private void set1_id(long _1_id) {
+    public void set1_id(long _1_id) {
         this._1_id = _1_id;
     }
 
@@ -73,5 +69,8 @@ public class Consola {
         this._4_competencia = _4_competencia;
     }
 
- 
+    
+
 }
+
+
