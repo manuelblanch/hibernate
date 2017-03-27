@@ -15,7 +15,6 @@ import Model.Consola1to1DAO;
 import Model.Model;
 import Vista.Vista;
 import entitats.Consola;
-import entitats.Consola;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -57,7 +56,7 @@ public class Controlador {
         eliminar();
         clictaula();
         objecte = CarregaTaulaCombo.carregaTaula((ArrayList) model.getClasseDAOConsoles().obtenLlista(), vista.getjTable1(), Consola.class);
-
+        carregaCombo((ArrayList) model.getClasseDAOConsoles().obtenLlista(), vista.getjComboBox1());
     }
 
 
@@ -69,9 +68,10 @@ public class Controlador {
                 if (e.getSource().equals(vista.getjButton2())) {
                     if (!vista.getjTextField1().getText().trim().equals("") || !vista.getjTextField2().getText().trim().equals("")) {
                         model.getClasseDAOConsoles().obtenLlista();
-                        Consola c = new Consola(vista.getjTextField1().getText(), vista.getjTextField2().getText(), (Consola) vista.getjComboBox1().getModel());
+                        Consola c = new Consola(vista.getjTextField1().getText(), vista.getjTextField2().getText(), (Consola)vista.getjComboBox1().getSelectedItem());
                         model.getClasseDAOConsoles().guarda(c);
                         objecte = CarregaTaulaCombo.carregaTaula((ArrayList) model.getClasseDAOConsoles().obtenLlista(), vista.getjTable1(), Consola.class);
+                        carregaCombo((ArrayList) model.getClasseDAOConsoles().obtenLlista(), vista.getjComboBox1());
                     } else {
                         JOptionPane.showMessageDialog(null, "Es necessita algun valor!!", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -98,14 +98,12 @@ public class Controlador {
                     Consola modificat = (Consola) modelo.getValueAt(vista.getjTable1().getSelectedRow(), modelo.getColumnCount() - 1);
                     modificat.set2_nom(vista.getjTextField1().getText());
                     modificat.set3_marca(vista.getjTextField2().getText());
-                    modificat.set4_competencia((Consola) vista.getjComboBox1().getModel());
-
+                    modificat.set4_competencia((Consola)vista.getjComboBox1().getSelectedItem());
                     vista.getjTable1().removeColumn(objecte);
                     model.getClasseDAOConsoles().actualitza(modificat);
                     vista.getjTable1().addColumn(objecte);
-
                     objecte = CarregaTaulaCombo.carregaTaula((ArrayList) model.getClasseDAOConsoles().obtenLlista(), vista.getjTable1(), Consola.class);
-
+                    carregaCombo((ArrayList) model.getClasseDAOConsoles().obtenLlista(), vista.getjComboBox1());
                 } else {
                     JOptionPane.showMessageDialog(null, "Has de seleccionar algun valor!!", "Error", JOptionPane.ERROR_MESSAGE);
 
@@ -133,7 +131,7 @@ public class Controlador {
                     vista.getjTable1().addColumn(objecte);
 
                     objecte = CarregaTaulaCombo.carregaTaula((ArrayList) model.getClasseDAOConsoles().obtenLlista(), vista.getjTable1(), Consola.class);
-
+                    carregaCombo((ArrayList) model.getClasseDAOConsoles().obtenLlista(), vista.getjComboBox1());
                 } else {
                     JOptionPane.showMessageDialog(null, "Has de seleccionar algun valor!!", "Error", JOptionPane.ERROR_MESSAGE);
 

@@ -27,15 +27,19 @@ public class Consola {
     private String _2_nom;
     private String _3_marca;
 
-    @OneToOne(optional = false)   //competencia entre consoles
+    @OneToOne(optional = true)   //competencia entre consoles
     private Consola _4_competencia;
 
-    
+    public Consola() {
+    }
+
     public Consola(String _2_nom, String _3_marca, Consola _4_competencia) {
         this._2_nom = _2_nom;
         this._3_marca = _3_marca;
         this._4_competencia = _4_competencia;
     }
+
+  
 
     public long get1_id() {
         return _1_id;
@@ -69,6 +73,15 @@ public class Consola {
         this._4_competencia = _4_competencia;
     }
 
+    @Override
+    public String toString() {
+        return  _2_nom + ", "+_3_marca;
+        
+    }
+    
+    
+
+    
     
 
 }
