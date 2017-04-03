@@ -5,72 +5,63 @@
  */
 package entitats;
 
-import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
+import entitats.Consola;
 
-/**
- *
- * @author manuel
- */
 @Entity
 @Table(name = "accesoris")
 public class Accesoris {
 
-    public Accesoris(long id, String nom, String tipus, String preu, List<Consola>Consoles) {
-        this.id = id;
-        this.nom = nom;
-        this.tipus = tipus;
-        this.preu = preu;
-    }
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    
-    private String nom;
-    
-    @Column(name = "tipus")// ens guarda la columna amb el nom indicat
-    private String tipus;
-    
-    @Transient// per a no guardar
-    private String preu;
+    @GeneratedValue
+    private long _1_id;
 
-    public long getId() {
-        return id;
+    private String _2_nom;
+    private String _3_preu;
+
+    @ManyToOne
+    @JoinColumn(name = "consola_id")
+    private Consola _4_consola;
+
+    public Accesoris(String _2_nom, String _3_preu, Consola _4_consola) {
+        this._2_nom = _2_nom;
+        this._3_preu = _3_preu;
+        this._4_consola = _4_consola;
     }
 
-    private void setId(long id) {
-        this.id = id;
+    public Accesoris() {
     }
 
-    public String getNom() {
-        return nom;
+    public long get1_id() {
+        return _1_id;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void set1_id(long _1_id) {
+        this._1_id = _1_id;
     }
 
-    public String getTipus() {
-        return tipus;
+    public String get2_nom() {
+        return _2_nom;
     }
 
-    public void setTipus(String tipus) {
-        this.tipus = tipus;
+    public void set2_nom(String _2_nom) {
+        this._2_nom = _2_nom;
     }
 
-    public String getPreu() {
-        return preu;
+    public String get3_preu() {
+        return _3_preu;
     }
 
-    public void setPreu(String preu) {
-        this.preu = preu;
+    public void set3_preu(String _3_preu) {
+        this._3_preu = _3_preu;
+    }
+
+    public Consola get4_consola() {
+        return _4_consola;
+    }
+
+    public void set4_consola(Consola _4_consola) {
+        this._4_consola = _4_consola;
     }
 
 }

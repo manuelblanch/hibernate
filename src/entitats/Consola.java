@@ -5,13 +5,20 @@
  */
 package entitats;
 
+import java.util.Collection;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import entitats.Accesoris;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
@@ -20,7 +27,6 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @Entity
 public class Consola {
 
- 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long _1_id;
@@ -29,6 +35,9 @@ public class Consola {
 
     @OneToOne(optional = true)   //competencia entre consoles
     private Consola _4_competencia;
+
+    @OneToMany(mappedBy = "_4_consola", cascade = CascadeType.ALL)
+    private Collection<Accesoris> _5_accesoris;
 
     public Consola() {
     }
@@ -39,8 +48,12 @@ public class Consola {
         this._4_competencia = _4_competencia;
     }
 
-  
-
+    public Consola(String _2_nom, String _3_marca, Collection<Accesoris> _5_accesoris) {
+        this._2_nom = _2_nom;
+        this._3_marca = _3_marca;
+        this._5_accesoris = _5_accesoris;
+    }
+    
     public long get1_id() {
         return _1_id;
     }
@@ -75,13 +88,20 @@ public class Consola {
 
     @Override
     public String toString() {
-        return  _2_nom + ", "+_3_marca;
-        
-    }
-    
-    
+        return _2_nom + ", " + _3_marca;
 
-    
+    }
+
+    public Collection<Accesoris> getAccesoris() {
+        return _5_accesoris;
+    }
+
+    public void setAccesoris(Collection<Accesoris> accesoris) {
+        this._5_accesoris = _5_accesoris;
+    }
+
+
+
     
 
 }
