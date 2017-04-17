@@ -24,6 +24,29 @@ import javax.persistence.Table;
  *
  * @author manuel
  */
+import java.util.Collection;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import entitats.Accesoris;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+/**
+ *
+ * @author manuel
+ */
 @Entity
 public class Consola {
 
@@ -37,9 +60,10 @@ public class Consola {
     private Consola _4_competencia;
 
     @OneToMany(mappedBy = "_4_consola", cascade = CascadeType.ALL)
-    private Collection<Accesoris> _5_accesoris;
+    private Collection<Accesoris> _4_consola;
 
     public Consola() {
+
     }
 
     public Consola(String _2_nom, String _3_marca, Consola _4_competencia) {
@@ -51,9 +75,9 @@ public class Consola {
     public Consola(String _2_nom, String _3_marca, Collection<Accesoris> _5_accesoris) {
         this._2_nom = _2_nom;
         this._3_marca = _3_marca;
-        this._5_accesoris = _5_accesoris;
+        this._4_consola = _4_consola;
     }
-    
+
     public long get1_id() {
         return _1_id;
     }
@@ -92,18 +116,16 @@ public class Consola {
 
     }
 
-    public Collection<Accesoris> getAccesoris() {
-        return _5_accesoris;
+
+    public Collection<Accesoris> get4_consola() {
+        return _4_consola;
     }
 
-    public void setAccesoris(Collection<Accesoris> accesoris) {
-        this._5_accesoris = _5_accesoris;
+    public void set4_consola(Collection<Accesoris> _4_consola) {
+        this._4_consola = _4_consola;
     }
-
-
-
-    
 
 }
+
 
 

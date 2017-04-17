@@ -21,9 +21,9 @@ public class Accesoris {
 
     @ManyToOne
     @JoinColumn(name = "consola_id")
-    private Consola _4_consola;
+    private Accesoris _4_consola;
 
-    public Accesoris(String _2_nom, String _3_preu, Consola _4_consola) {
+    public Accesoris(String _2_nom, String _3_preu, Accesoris _4_consola) {
         this._2_nom = _2_nom;
         this._3_preu = _3_preu;
         this._4_consola = _4_consola;
@@ -56,12 +56,20 @@ public class Accesoris {
         this._3_preu = _3_preu;
     }
 
-    public Consola get4_consola() {
+    public Accesoris get4_consola() {
         return _4_consola;
     }
 
-    public void set4_consola(Consola _4_consola) {
+    public void set4_consola(Accesoris _4_consola) {
         this._4_consola = _4_consola;
     }
 
+    @Override
+    public String toString() {
+        return "Accesoris{" + "_2_nom=" + _2_nom + '}';
+    }
+
+   
+
 }
+

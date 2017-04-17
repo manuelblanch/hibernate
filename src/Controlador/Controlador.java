@@ -167,7 +167,7 @@ public class Controlador {
                     if (e.getSource().equals(vista.getjButton5())) {
                         if (!vista.getjTextField3().getText().trim().equals("") || !vista.getjTextField4().getText().trim().equals("")) {
                             model.getClasseDAOAccesoris().obtenLlista();
-                            Accesoris a = new Accesoris(vista.getjTextField3().getText(), vista.getjTextField4().getText(), (Consola) (List<Consola>) (Collection<Consola>) (Consola) vista.getjComboBox2().getSelectedItem());
+                            Accesoris a = new Accesoris(vista.getjTextField3().getText(), vista.getjTextField4().getText(), (Accesoris) vista.getjComboBox2().getSelectedItem());
                             model.getClasseDAOAccesoris().guarda(a);
                             objecte2 = CarregaTaulaCombo.carregaTaula((ArrayList) model.getClasseDAOAccesoris().obtenLlista(), vista.getjTable2(), Accesoris.class);
                             carregaCombo((ArrayList) model.getClasseDAOAccesoris().obtenLlista(), vista.getjComboBox2());
@@ -198,7 +198,7 @@ public class Controlador {
                     Accesoris modificat = (Accesoris) modelo.getValueAt(vista.getjTable2().getSelectedRow(), modelo.getColumnCount() - 1);
                     modificat.set2_nom(vista.getjTextField3().getText());
                     modificat.set3_preu(vista.getjTextField4().getText());
-                    modificat.set4_consola((Consola) (List<Consola>) (Collection<Consola>) (Consola) vista.getjComboBox2().getSelectedItem());
+                    modificat.set4_consola((Accesoris) vista.getjComboBox2().getSelectedItem());
                     vista.getjTable2().removeColumn(objecte2);
                     model.getClasseDAOAccesoris().actualitza(modificat);
                     vista.getjTable2().addColumn(objecte2);
